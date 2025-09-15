@@ -58,34 +58,31 @@ This test case involves multiple, layered bugs to evaluate the assistant's abili
 
 #### Problem Description
 
-The user is attempting to write a Python script that reads data from a JSON file, filters the data based on a specific key-value pair, and then calculates the average of a numerical field from the filtered results. The script should also handle cases where the file does not exist or the data is in an incorrect format. The user believes the code is logically sound but is getting an unexpected `KeyError` and incorrect average values.
+Write a program that takes a list of student scores, calculates the average score, identifies the highest score, and counts how many students scored above the average.
 
 #### Student's Buggy Code (`test.py`)
 
 ```python
-import json
+scores = [75, 82, 90, 66, 59, 88]
+total = 0
+for i in range(len(scores)):
+    total = scores[i]  # Bug 1: Overwrites total instead of accumulating
+average = total / len(scores)
 
-def process_data(filename, filter_key, filter_value, calc_field):
-    with open(filename, 'r') as file:
-        data = json.load(file)
+highest = 0
+for score in scores:
+    if score < highest:  # Bug 2: Should be '>'
+        highest = score
 
-    filtered_items = []
-    for item in data:
-        if item[filter_key] == filter_value:
-            filtered_items.append(item)
+above_average_count = 0
+for score in scores:
+    if score > average:
+        above_average_count += 1
+    else:
+        above_average_count = 0  # Bug 3: Resets count incorrectly
 
-    total = 0
-    count = 0
-    for item in filtered_items:
-        total += item[calc_field]
-        count += 1
+print("Average score:", average)
+print("Highest score:", highest)
+print("Number of students above average:", above_average_count)
 
-    if count == 0:
-        return 0
-
-    return total / count
-
-result = process_data("data.json", "category", "A", "value")
-
-print(f"The average is: {result}")
 
