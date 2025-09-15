@@ -1,24 +1,21 @@
-import json
+scores = [75, 82, 90, 66, 59, 88]
+total = 0
+for i in range(len(scores)):
+    total = scores[i]  
+average = total / len(scores)
 
-def process_data(filename, filter_key, filter_value, calc_field):
-    with open(filename, 'r') as file:
-        data = json.load(file)
+highest = 0
+for score in scores:
+    if score < highest:  
+        highest = score
 
-    filtered_items = []
-    for item in data:
-        if item[filter_key] == filter_value:
-            filtered_items.append(item)
+above_average_count = 0
+for score in scores:
+    if score > average:
+        above_average_count += 1
+    else:
+        above_average_count = 0  
 
-    total = 0
-    count = 0
-    for item in filtered_items:
-        total += item[calc_field]
-        count += 1
-
-    if count == 0:
-        return 0
-
-    return total / count
-
-result = process_data("data.json", "category", "A", "value")
-print(f"The average is: {result}")
+print("Average score:", average)
+print("Highest score:", highest)
+print("Number of students above average:", above_average_count)
