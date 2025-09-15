@@ -1,5 +1,5 @@
 
-#PLEASE READ THE SUBMIT.MD FIRST
+#**PLEASE READ THE SUBMIT.MD FIRST FOR THE PROMPT**
 
 # AI Debugging Assistant
 
@@ -88,3 +88,4 @@ def process_data(filename, filter_key, filter_value, calc_field):
 result = process_data("data.json", "category", "A", "value")
 
 print(f"The average is: {result}")
+
