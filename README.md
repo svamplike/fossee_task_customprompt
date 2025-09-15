@@ -1,3 +1,6 @@
+
+#PLEASE READ THE SUBMIT.MD FIRST
+
 # AI Debugging Assistant
 
 This is a testbench as command-line interface (CLI) for the AI Debugging Assistant using the custom prompt and built with the Google Gemini API. 
@@ -83,4 +86,5 @@ def process_data(filename, filter_key, filter_value, calc_field):
     return total / count
 
 result = process_data("data.json", "category", "A", "value")
+
 print(f"The average is: {result}")
