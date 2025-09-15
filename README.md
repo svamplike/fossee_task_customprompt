@@ -56,7 +56,7 @@ To get started with the Socratic Debugging Assistant, follow these simple steps.
 
 This test case involves multiple, layered bugs to evaluate the assistant's ability to handle complex logical errors and guide the user through a multi-step debugging process.
 
-#### Problem Description
+#### Program Description
 
 Write a program that takes a list of student scores, calculates the average score, identifies the highest score, and counts how many students scored above the average.
 
@@ -84,5 +84,6 @@ for score in scores:
 print("Average score:", average)
 print("Highest score:", highest)
 print("Number of students above average:", above_average_count)
+
 
 
